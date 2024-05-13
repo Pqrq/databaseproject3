@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% load static %}
+    <script src="{% static 'script.js' %}"></script>
+</head>
+<body>
+    <h1 id="coachNameHeader">Hello {{ username }}</h1>
+
+    <div>
+        <h1>Stadiums</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stadium Id</th>
+                    <th>Stadium Name</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stadium in stadiums %}
+                <tr>
+                    <td>{{ stadium.0 }}</td>
+                    <td>{{ stadium.1 }}</td>
+                    <td>{{ stadium.2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div>        
+        <form id="deleteMatchSessionForm" method="post" data-csrf="{{ csrf_token }}">
+            {% csrf_token %}
+            <p>Delete Match Session Form</p>
+            <div class="form-group">
+                <label for="sessionId">Session Id:</label>
+                <input type="text" id="sessionId" name="sessionId" required>
+            </div>
+            <button id="deleteMatchSession">Delete Match Session</button>   
+        </form>
+    </div>
+
+    <div>        
+        <form id="addNewMatchSessionForm" method="post" data-csrf="{{ csrf_token }}">
+            {% csrf_token %}
+            <p>Add Match Session Form</p>
+            <div class="form-group">
+                <label for="stadiumName">Stadium Name:</label>
+                <input type="text" id="stadiumName" name="stadiumName" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="text" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="timeSlot">Time Slot:</label>
+                <input type="text" id="timeSlot" name="timeSlot" required>
+            </div>
+            <div class="form-group">
+                <label for="juryName">Jury Name:</label>
+                <input type="text" id="juryName" name="juryName" required>
+            </div>
+            <div class="form-group">
+                <label for="jurySurname">Jury Surname:</label>
+                <input type="text" id="jurySurname" name="jurySurname" required>
+            </div>
+            <p>Add Match Session Form-Squad Decleration</p>
+            <div class="form-group">
+                <label for="player1Name">Player 1 Name:</label>
+                <input type="text" id="player1Name" name="player1Name">
+            </div>
+            <div class="form-group">
+                <label for="player2Name">Player 2 Name:</label>
+                <input type="text" id="player2Name" name="player2Name">
+            </div>
+            <div class="form-group">
+                <label for="player3Name">Player 3 Name:</label>
+                <input type="text" id="player3Name" name="player3Name">
+            </div>
+            <div class="form-group">
+                <label for="player4Name">Player 4 Name:</label>
+                <input type="text" id="player4Name" name="player4Name">
+            </div>
+            <div class="form-group">
+                <label for="player5Name">Player 5 Name:</label>
+                <input type="text" id="player5Name" name="player5Name">
+            </div>
+            <div class="form-group">
+                <label for="player6Name">Player 6 Name:</label>
+                <input type="text" id="player6Name" name="player6Name">
+            </div>
+            <button id="addMatchSessionWithSquad">Add Match Session With Squad</button> 
+            <button id="addMatchSessionWithoutSquad">Add Match Session Without Squad</button>  
+        </form>
+    </div>
+
+    <div>        
+        <form id="createSquadForm" method="post" data-csrf="{{ csrf_token }}">
+            {% csrf_token %}
+            <p>Squad Decleration</p>
+            <div class="form-group">
+                <label for="squadSessionId">Squad Session Id:</label>
+                <input type="text" id="squadSessionId" name="squadSessionId" required>
+            </div>
+            <div class="form-group">
+                <label for="squadPlayer1Name">Player 1 Name:</label>
+                <input type="text" id="squadPlayer1Name" name="squadPlayer1Name" required>
+            </div>
+            <div class="form-group">
+                <label for="squadPlayer2Name">Player 2 Name:</label>
+                <input type="text" id="squadPlayer2Name" name="squadPlayer2Name" required>
+            </div>
+            <div class="form-group">
+                <label for="squadPlayer3Name">Player 3 Name:</label>
+                <input type="text" id="squadPlayer3Name" name="squadPlayer3Name" required>
+            </div>
+            <div class="form-group">
+                <label for="squadPlayer4Name">Player 4 Name:</label>
+                <input type="text" id="squadPlayer4Name" name="squadPlayer4Name" required>
+            </div>
+            <div class="form-group">
+                <label for="squadPlayer5Name">Player 5 Name:</label>
+                <input type="text" id="squadPlayer5Name" name="squadPlayer5Name" required>
+            </div>
+            <div class="form-group">
+                <label for="squadPlayer6Name">Player 6 Name:</label>
+                <input type="text" id="squadPlayer6Name" name="squadPlayer6Name" required>
+            </div>
+            <button id="createSquad">Create Squad</button>  
+        </form>
+    </div>
+    
+
+</body>
+</html>

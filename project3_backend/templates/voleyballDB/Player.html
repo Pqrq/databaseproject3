@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% load static %}
+    <script src="{% static 'script.js' %}"></script>
+</head>
+<body>
+    <h1 id="playerNameHeader">Hello {{ username }}</h1>
+
+    <div>
+        <h1>Played Players</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Player Surname</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in playedPlayers %}
+                <tr>
+                    <td>{{ player.0 }}</td>
+                    <td>{{ player.1 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <p>Average Height of Players Which You Have Played Most Matches With: {{ maxHeight }}</p>
+
+    <script>
+        // Retrieve username from URL parameter and set it as the title
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        if (username) {
+            document.title = username;
+            document.getElementById('playerNameHeader').textContent = username;
+        }
+    </script>
+    
+
+</body>
+</html>

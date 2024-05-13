@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% load static %}
+    <script src="{% static 'script.js' %}"></script>
+</head>
+<body>
+    <h1 id="managerNameHeader">Hello {{username}}</h1>
+
+    <script>
+        // Retrieve username from URL parameter and set it as the title
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        if (username) {
+            document.title = username;
+            document.getElementById('managerNameHeader').textContent = username;
+        }
+    </script>
+    
+    <div>        
+        <form id="addNewUserForm" method="post" data-csrf="{{ csrf_token }}">
+            {% csrf_token %}
+            <p>Add New User Form</p>
+            <div class="form-group">
+                <label for="newUsername">Username:</label>
+                <input type="text" id="newUsername" name="newUsername" required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">Password:</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" required>
+            </div>
+            <div class="form-group">
+                <label for="newType">Type:</label>
+                <input type="text" id="newType" name="newType" required>
+            </div>
+
+            <p>For Coaches and Juries</p>
+            <div class="form-group">
+                <label for="nationality">Nationality:</label>
+                <input type="text" id="nationality" name="nationality">
+            </div>
+
+            <p>For Players</p>
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth:</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth">
+            </div>
+            <div class="form-group">
+                <label for="height">Height:</label>
+                <input type="number" id="height" name="height">
+            </div>
+            <div class="form-group">
+                <label for="weight">Weight:</label>
+                <input type="number" id="weight" name="weight">
+            </div>
+            <div class="form-group">
+                <label for="mainPosition">Main Position:</label>
+                <input type="text" id="mainPosition" name="mainPosition">
+            </div>
+            <div class="form-group">
+                <label for="mainTeam">Main Team:</label>
+                <input type="text" id="mainTeam" name="mainTeam">
+            </div>
+
+            <button id="addNewUser">Add New User</button>   
+        </form>
+    </div>
+    
+    <div>        
+        <form id="changeStadiumNameForm" method="post" data-csrf="{{ csrf_token }}">
+            {% csrf_token %}
+            <p>Change Stadium Name Form</p>
+            <div class="form-group">
+                <label for="oldName">Old Name:</label>
+                <input type="text" id="oldName" name="oldName" required>
+            </div>
+            <div class="form-group">
+                <label for="newName">New Name:</label>
+                <input type="text" id="newName" name="newName" required>
+            </div>
+            <button id="changeStadiumName">Change Stadium Name</button>   
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jury Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% load static %}
+    <script src="{% static 'script.js' %}"></script>
+</head>
+<body>
+    <h1 id="juryNameHeader">Hello {{ username }}</h1>
+    
+    <p>Average Rating: {{ avgRating }}</p>
+    <p>Total Number of Rated Sessions: {{ countOfRated }}</p>
+
+    <div>        
+        <form id="rateMatchSessionForm" method="post" data-csrf="{{ csrf_token }}">
+            {% csrf_token %}
+            <p>Rate Match Session Form</p>
+            <div class="form-group">
+                <label for="matchSessionNumber">Match Session Number:</label>
+                <input type="text" id="matchSessionNumber" name="matchSessionNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <input type="text" id="rating" name="rating" required>
+            </div>
+            <button id="rateMatchSession">Rate Match Session</button>   
+        </form>
+    </div>
+
+</body>
+</html>

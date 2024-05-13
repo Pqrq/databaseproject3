@@ -1,0 +1,19 @@
+/* You can add some basic styling here if you want */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 20px; /* Add space between form groups */
+}
+
+.input-label {
+    display: inline-block; /* Display labels as inline blocks */
+    width: 100px; /* Set a fixed width for the labels */
+}
+
+input {
+    display: inline-block; /* Display inputs as inline blocks */
+    width: 200px; /* Calculate the width of the input fields */
+    box-sizing: border-box; /* Include padding and border in the width */
+}
